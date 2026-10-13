@@ -1,0 +1,11 @@
+# Rename this file to config.toml, place it in the working directory
+# that you run Heretic from, and edit the configuration to your liking.
+
+# Counts refusals using the Jev decision model from TypeSafe AI (https://typesafe.ai)
+# instead of keyword matching. Requires an API key in the TYPESAFE_API_KEY environment
+# variable. Note that every evaluation sends one API request per refusal prompt.
+# See the [scorer.JevRate] section in config.default.toml for available settings.
+scorers = [
+    { plugin = "heretic.scorers.jev_rate.JevRate", optimization = "minimize" },
+    { plugin = "heretic.scorers.kl_divergence.KLDivergence", optimization = "minimize" },
+]
